@@ -35,9 +35,19 @@ Static mode is suitable for document-oriented websites with fixed content, where
 - Each directory must contain an `index.md` file
 - `index.md` records the contents of the directory in table format:
   - File/subdirectory name
-  - Relative address
+  - Address (supports three path types)
   - Main content
   - Description of purpose
+
+**Path Types:**
+
+| Type | Format Example | Description |
+|------|---------------|-------------|
+| Relative Path | `./getting-started.md`, `../api/index.md` | Position relative to current directory |
+| Absolute Path | `/docs/guide.md`, `/api/users` | Position relative to site root |
+| External Path | `https://example.com/doc.md` | Full URL pointing to external site |
+
+Agents determine the path type and locate resources based on the address format.
 
 **Example Directory Structure:**
 ```
@@ -59,6 +69,7 @@ Static mode is suitable for document-oriented websites with fixed content, where
 | Name | Address | Content | Purpose |
 |------|---------|---------|---------|
 | Getting Started | ./getting-started.md | Installation and basic configuration | Help new users get started |
+| External Docs | https://example.com/docs.md | Third-party reference materials | Extended reading |
 | API Reference | ./api/index.md | API documentation index | View all API descriptions |
 | Examples | ./examples/index.md | Usage examples index | Reference real-world cases |
 ```
