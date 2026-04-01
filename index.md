@@ -1,32 +1,32 @@
 https://github.com/RaysunKR/MarkWay
 
-> 本站遵循MarkWay协议：https://github.com/RaysunKR/MarkWay/protocol.md
+> This site follows the MarkWay Protocol: https://github.com/RaysunKR/MarkWay/protocol.md
 
-# 使用 MarkWay 协议的站点列表
+# Sites Using MarkWay Protocol
 
-本文档列出所有已知采用 [MarkWay 协议](protocol.md) 的网站。
+This document lists all known websites that adopt the [MarkWay Protocol](protocol_en.md).
 
-| 站点名称 | 地址 | 描述 |
-|----------|------|------|
-| ZIWEI.ONE | https://ziwei.one | 紫微斗数占卜工具，支持通过 Agents 进行占卜 |
+| Site Name | URL | Description |
+|-----------|-----|-------------|
+| ZIWEI.ONE | https://ziwei.one | Zi Wei Dou Shu (Purple Star Astrology) divination tool, supports divination via Agents |
 
-## 如何添加您的站点
+## How to Add Your Site
 
-如果您的网站采用了 MarkWay 协议，欢迎通过以下方式提交：
+If your website uses the MarkWay Protocol, please submit it via:
 
-1. Fork [MarkWay 仓库](https://github.com/RaysunKR/MarkWay)
-2. 在 `index.md` 中添加您的站点信息
-3. 提交 Pull Request
+1. Fork the [MarkWay repository](https://github.com/RaysunKR/MarkWay)
+2. Add your site information in `index.md`
+3. Submit a Pull Request
 
-**提交格式：**
+**Submission Format:**
 ```markdown
-| 您的站点名称 | https://your-site.com | 简短描述 |
+| Your Site Name | https://your-site.com | Brief description |
 ```
 
-## 站点统计
+## Site Statistics
 
-- **总数**: 1 个站点
+- **Total**: 1 site
 
 ---
 
-*最后更新时间: 2026-04-01*
+*Last Updated: 2026-04-01*
