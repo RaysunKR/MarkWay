@@ -16,10 +16,10 @@ The MarkWay protocol defines data exchange standards between AI Agents and serve
 
 Regardless of the mode used, the root request (website entry point) must specify the location of the protocol document in its response content, so that all Agents can understand how to browse MarkWay sites.
 
-| Mode | Root Request | Protocol Document | Content Requirements |
-|------|--------------|-------------------|---------------------|
-| Static Mode | `/index.md` | `/protocol.md` (fixed) | README.md content of this protocol in any language |
-| Dynamic Mode | `/` | `/protocol` (fixed) | README.md content of this protocol in any language |
+| Mode | Root Request | Protocol Document Address | Content Requirements |
+|------|--------------|---------------------------|---------------------|
+| Static Mode | `/index.md` | `{baseURL}/protocol.md` | README.md content of this protocol in any language |
+| Dynamic Mode | `/` | `{baseURL}/protocol` | README.md content of this protocol in any language |
 
 **Notes:**
 - The root request response must contain a link to the protocol document
@@ -56,7 +56,7 @@ Regardless of static or dynamic mode, all Markdown content returned by GET reque
 ```markdown
 https://example.com
 
-> MarkWay Protocol: /protocol.md
+> MarkWay Protocol: https://example.com/protocol.md
 
 # Page Title
 
@@ -66,13 +66,13 @@ https://example.com
 **Format Requirements:**
 1. **First line**: The site's baseURL (absolute root URL), without trailing slash
 2. **Empty line**
-3. **Second line**: A blockquote starting with `> ` declaring MarkWay protocol usage and providing the protocol address
+3. **Second line**: A blockquote starting with `> ` declaring that the site follows the MarkWay protocol and providing the **absolute path address** of the protocol document
 4. **Empty line**
 5. **Body content**: Main page content
 
 **Notes:**
 - baseURL is used by Agents as a base when constructing absolute paths
-- Protocol declaration allows Agents to identify MarkWay sites
+- Protocol declaration uses absolute path (`{baseURL}/protocol` or `{baseURL}/protocol.md`) to ensure Agents can directly access it
 
 **Example Directory Structure:**
 ```
@@ -91,7 +91,7 @@ https://example.com
 ```markdown
 https://docs.example.com
 
-> MarkWay Protocol: /protocol.md
+> MarkWay Protocol: https://docs.example.com/protocol.md
 
 # Documentation Directory
 
