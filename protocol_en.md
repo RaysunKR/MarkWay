@@ -33,7 +33,7 @@ Static mode is suitable for document-oriented websites with fixed content, where
 **Rules:**
 - All links must end with `.md`
 - Each directory must contain an `index.md` file
-- All `index.md` files and Markdown content returned by GET requests must include a declaration at the beginning stating that the site uses the MarkWay protocol and provide the protocol address
+- `index.md` records the contents of the directory in table format:
   - File/subdirectory name
   - Address (supports three path types)
   - Main content
@@ -48,6 +48,31 @@ Static mode is suitable for document-oriented websites with fixed content, where
 | External Path | `https://example.com/doc.md` | Full URL pointing to external site |
 
 Agents determine the path type and locate resources based on the address format.
+
+### GET Response Format Specification
+
+Regardless of static or dynamic mode, all Markdown content returned by GET requests must follow this format:
+
+```markdown
+https://example.com
+
+> MarkWay Protocol: /protocol.md
+
+# Page Title
+
+...
+```
+
+**Format Requirements:**
+1. **First line**: The site's baseURL (absolute root URL), without trailing slash
+2. **Empty line**
+3. **Second line**: A blockquote starting with `> ` declaring MarkWay protocol usage and providing the protocol address
+4. **Empty line**
+5. **Body content**: Main page content
+
+**Notes:**
+- baseURL is used by Agents as a base when constructing absolute paths
+- Protocol declaration allows Agents to identify MarkWay sites
 
 **Example Directory Structure:**
 ```
@@ -64,6 +89,10 @@ Agents determine the path type and locate resources based on the address format.
 
 **Example `index.md`:**
 ```markdown
+https://docs.example.com
+
+> MarkWay Protocol: /protocol.md
+
 # Documentation Directory
 
 | Name | Address | Content | Purpose |
@@ -79,7 +108,7 @@ Agents determine the path type and locate resources based on the address format.
 Dynamic mode is suitable for scenarios requiring interaction and data exchange, distinguishing operation types through HTTP request methods.
 
 **Rules:**
-- **GET Request**: Returns Markdown format API documentation, URL is an absolute static path, **URL parameters are prohibited**. Response content must include a declaration at the beginning stating that the site uses the MarkWay protocol and provide the protocol address
+- **GET Request**: Returns Markdown format API documentation, URL is an absolute static path, **URL parameters are prohibited**. Response format follows the "GET Response Format Specification"
 - **POST Request**: Executes data exchange, all parameters passed through the request body, supporting the following response formats:
   - Markdown dynamic page (default)
   - JSON / other format data (specified via `Accept` header)
