@@ -56,7 +56,7 @@ Regardless of static or dynamic mode, all Markdown content returned by GET reque
 ```markdown
 https://example.com
 
-> 本站遵循MarkWay协议：https://example.com/protocol.md
+> This site follows the MarkWay Protocol: https://example.com/protocol.md
 
 # Page Title
 
@@ -66,7 +66,7 @@ https://example.com
 **Format Requirements:**
 1. **First line**: The site's baseURL (absolute root URL), without trailing slash
 2. **Empty line**
-3. **Second line**: A blockquote starting with `> ` in the format `本站遵循MarkWay协议：{protocol_absolute_path}`
+3. **Second line**: A blockquote starting with `> ` in the format `This site follows the MarkWay Protocol: {protocol_absolute_path}`
 4. **Empty line**
 5. **Body content**: Main page content
 
