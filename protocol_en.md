@@ -33,11 +33,11 @@ Static mode is suitable for document-oriented websites with fixed content, where
 **Rules:**
 - All links must end with `.md`
 - Each directory must contain an `index.md` file
-- `index.md` records the contents of the directory in table format:
-  - File/subdirectory name
-  - Address (supports three path types)
-  - Main content
-  - Description of purpose
+- `index.md` records the contents of the directory in **table format**:
+  - **Required fields**:
+    - `Address`: The path to the resource (supports three path types)
+    - `Description`: A description of the resource's purpose
+  - **Optional fields**: Add as needed, such as `Name`, `Type`, `Size`, etc.
 
 **Path Types:**
 
@@ -95,12 +95,12 @@ https://docs.example.com
 
 # Documentation Directory
 
-| Name | Address | Content | Purpose |
-|------|---------|---------|---------|
-| Getting Started | ./getting-started.md | Installation and basic configuration | Help new users get started |
-| External Docs | https://example.com/docs.md | Third-party reference materials | Extended reading |
-| API Reference | ./api/index.md | API documentation index | View all API descriptions |
-| Examples | ./examples/index.md | Usage examples index | Reference real-world cases |
+| Address | Description |
+|---------|-------------|
+| ./getting-started.md | Getting Started: Installation and basic configuration to help new users |
+| https://example.com/docs.md | External Docs: Third-party reference materials for extended reading |
+| ./api/index.md | API Reference: API documentation index with all API descriptions |
+| ./examples/index.md | Examples: Usage examples index with real-world cases |
 ```
 
 ### Dynamic Mode
