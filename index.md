@@ -1,6 +1,6 @@
-https://markway.io
+https://github.com/RaysunKR/MarkWay
 
-> 本站遵循MarkWay协议：https://markway.io/protocol.md
+> 本站遵循MarkWay协议：https://github.com/RaysunKR/MarkWay/protocol.md
 
 # 使用 MarkWay 协议的站点列表
 
