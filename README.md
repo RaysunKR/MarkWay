@@ -1,120 +1,87 @@
 # MarkWay
 
-> 为 AI Agents 设计的 HTTP 协议标准，让机器更智能地浏览网页。
+> Empowering AI Agents to browse the web with clarity and intelligence.
 
-## 简介
+## Why MarkWay?
 
-MarkWay 是一个以 **Markdown** 为基础、专门为 AI Agents 设计的 HTTP 协议扩展。它将网页内容转换为结构化的 Markdown 格式返回给 Agent，大幅降低解析复杂度，让 AI 能够像人类阅读文档一样自然地理解和浏览网页。
+The web was built for humans, not machines. While humans can effortlessly parse HTML, navigate complex layouts, and understand visual hierarchies, AI Agents struggle with these tasks. MarkWay bridges this gap by providing a protocol that speaks the language AI understands best: **structured, semantic content**.
 
-**核心理念**: 网页 → Markdown → Agent，跳过复杂的 HTML 解析，直接提供语义化的结构化内容。
+## The Problem
 
-## 协议规范
+Traditional web browsing requires AI Agents to:
+- Parse complex HTML structures
+- Execute JavaScript to render content
+- Deal with inconsistent class names and DOM structures
+- Handle anti-scraping measures and rate limits
+- Extract meaningful data from visual layouts
 
-MarkWay 协议定义了 AI Agent 与服务器之间的数据交换标准，支持两种工作模式：
+This approach is fragile, inefficient, and computationally expensive.
 
-### 根请求与协议发现
+## The Solution
 
-无论采用何种模式，根请求（网站入口）必须在响应内容中指明协议文档的位置，以便所有 Agents 能够理解 MarkWay 站点的浏览方法。
+MarkWay introduces a **Markdown-first protocol** that transforms the web experience for AI Agents:
 
-| 模式 | 根请求地址 | 协议文档位置 | 内容要求 |
-|------|-----------|-------------|---------|
-| 静态模式 | `/index.md` | `/protocol.md`（固定） | 本协议任意语言版本的 README.md 内容 |
-| 动态模式 | `/` | `/protocol`（固定） | 本协议任意语言版本的 README.md 内容 |
-
-**说明：**
-- 根请求的响应中必须包含指向协议文档的链接
-- 协议文档内容为本协议（MarkWay）的完整规范，可采用任意语言版本
-- Agents 通过访问协议文档即可理解如何浏览当前站点
-
-### 静态模式
-
-静态模式适用于内容固定的文档型网站，所有资源以 Markdown 文件形式组织。
-
-**规则：**
-- 所有链接必须以 `.md` 结尾
-- 每个目录必须包含 `index.md` 文件
-- `index.md` 以表格形式记载该目录下的内容：
-  - 文件/子目录名称
-  - 地址（支持三种路径类型）
-  - 主要内容
-  - 作用说明
-
-**路径类型：**
-
-| 类型 | 格式示例 | 说明 |
-|------|---------|------|
-| 相对路径 | `./getting-started.md`、`../api/index.md` | 相对于当前目录的位置 |
-| 绝对路径 | `/docs/guide.md`、`/api/users` | 相对于站点根目录的位置 |
-| 外部路径 | `https://example.com/doc.md` | 指向外部站点的完整 URL |
-
-Agent 根据地址格式判断路径类型并定位资源。
-
-**示例目录结构：**
 ```
-/docs
-  ├── index.md          # 目录索引
-  ├── getting-started.md
-  ├── api/
-  │     ├── index.md    # API 子目录索引
-  │     └── reference.md
-  └── examples/
-        ├── index.md
-        └── tutorial.md
+Web → Markdown → Agent
 ```
 
-**示例 `index.md`：**
-```markdown
-# 文档目录
+By serving content directly in Markdown format, MarkWay enables:
 
-| 名称 | 地址 | 内容 | 作用 |
-|------|------|------|------|
-| 快速开始 | ./getting-started.md | 安装与基础配置 | 帮助新用户入门 |
-| 外部文档 | https://example.com/docs.md | 第三方参考资料 | 扩展阅读 |
-| API 参考 | ./api/index.md | 接口文档索引 | 查看所有 API 说明 |
-| 示例教程 | ./examples/index.md | 使用示例索引 | 参考实际案例 |
-```
+- **Semantic clarity**: Content structure is explicit and unambiguous
+- **Efficient parsing**: No HTML parsing overhead or DOM manipulation
+- **Natural comprehension**: AI reads like humans read documentation
+- **Protocol discovery**: Built-in mechanism for Agents to understand site structure
 
-### 动态模式
+## How It Works
 
-动态模式适用于需要交互和数据交换的场景，通过 HTTP 请求方法区分操作类型。
+MarkWay operates in two modes:
 
-**规则：**
-- **GET 请求**：返回 Markdown 格式的接口文档，URL 为绝对静态路径，**禁止使用 URL 传参**
-- **POST 请求**：执行数据交换，所有参数通过请求体传递，支持以下响应格式：
-  - Markdown 动态页面（默认）
-  - JSON / 其他格式数据（通过 `Accept` 头指定）
+### Static Mode
+Content is organized as Markdown files with predictable directory structures:
+- Every directory contains an `index.md` with a structured table of contents
+- All links end with `.md` for consistency
+- Supports relative, absolute, and external paths
 
-**请求示例：**
-```bash
-# 获取 API 文档（GET）
-GET /api/users
-# 返回：该接口的参数说明文档（Markdown）
+### Dynamic Mode
+Interactive endpoints use HTTP methods semantically:
+- `GET` returns Markdown documentation (no URL parameters)
+- `POST` performs data exchange via request body
+- Response format negotiation via `Accept` headers
 
-# 执行数据查询（POST）
-POST /api/users
-Content-Type: application/json
+## Quick Start
 
-{"id": 123}
-# 返回：用户数据（Markdown 表格或 JSON）
-```
+For site owners:
+1. Serve your content in Markdown format
+2. Include `index.md` in each directory with a table listing files and their purposes
+3. Root request must link to protocol documentation at `/protocol`
 
-**响应格式协商：**
+For AI Agent developers:
+1. Detect MarkWay sites via the `X-MarkWay-Protocol` header or protocol discovery
+2. Parse `index.md` tables to navigate site structure
+3. Use `GET` for documentation, `POST` for data exchange
 
-| Accept 头 | 响应格式 |
-|-----------|----------|
-| `text/markdown` | Markdown 文档（默认） |
-| `application/json` | JSON 数据 |
+## Protocol Specification
 
+The complete protocol specification is available in:
+- [English](protocol_en.md)
+- [简体中文](protocol.md)
+- [繁體中文](protocol_zh_TW.md)
 
-## 参与贡献
+## Use Cases
 
-欢迎提交 Issue 和 PR 来完善 MarkWay 协议。
+- **API Documentation**: Human-readable docs that Agents can parse flawlessly
+- **Knowledge Bases**: Structured information accessible to both humans and AI
+- **Data Services**: Query endpoints with self-documenting interfaces
+- **AI-Native Applications**: Build web services designed for Agent consumption
 
-## 关于作者
+## Contributing
 
-- **作者**: RaysunKR
+We welcome contributions! Please submit issues and pull requests to help improve the MarkWay protocol.
 
-
-## 许可证
+## License
 
 MIT License
+
+---
+
+*MarkWay: The web, reimagined for the age of AI.*
