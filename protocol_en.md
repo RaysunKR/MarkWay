@@ -33,7 +33,7 @@ Static mode is suitable for document-oriented websites with fixed content, where
 **Rules:**
 - All links must end with `.md`
 - Each directory must contain an `index.md` file
-- `index.md` records the contents of the directory in table format:
+- All `index.md` files and Markdown content returned by GET requests must include a declaration at the beginning stating that the site uses the MarkWay protocol and provide the protocol address
   - File/subdirectory name
   - Address (supports three path types)
   - Main content
@@ -79,7 +79,7 @@ Agents determine the path type and locate resources based on the address format.
 Dynamic mode is suitable for scenarios requiring interaction and data exchange, distinguishing operation types through HTTP request methods.
 
 **Rules:**
-- **GET Request**: Returns Markdown format API documentation, URL is an absolute static path, **URL parameters are prohibited**
+- **GET Request**: Returns Markdown format API documentation, URL is an absolute static path, **URL parameters are prohibited**. Response content must include a declaration at the beginning stating that the site uses the MarkWay protocol and provide the protocol address
 - **POST Request**: Executes data exchange, all parameters passed through the request body, supporting the following response formats:
   - Markdown dynamic page (default)
   - JSON / other format data (specified via `Accept` header)
