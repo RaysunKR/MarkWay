@@ -6,9 +6,9 @@ https://github.com/RaysunKR/MarkWay
 
 本文档列出所有已知采用 [MarkWay 协议](protocol.md) 的网站。
 
-| 站点名称 | 地址 | 描述 | 模式 |
-|----------|------|------|------|
-| ZIWEI.ONE | https://ziwei.one | 紫微斗数占卜工具，支持通过 Agents 进行占卜 | 动态模式 |
+| 站点名称 | 地址 | 描述 |
+|----------|------|------|
+| ZIWEI.ONE | https://ziwei.one | 紫微斗数占卜工具，支持通过 Agents 进行占卜 |
 
 ## 如何添加您的站点
 
@@ -20,14 +20,12 @@ https://github.com/RaysunKR/MarkWay
 
 **提交格式：**
 ```markdown
-| 您的站点名称 | https://your-site.com | 简短描述 | 静态/动态模式 |
+| 您的站点名称 | https://your-site.com | 简短描述 |
 ```
 
 ## 站点统计
 
 - **总数**: 1 个站点
-- **静态模式**: 0 个
-- **动态模式**: 1 个
 
 ---
 
