@@ -56,7 +56,7 @@ MarkWay 以兩種模式運作：
 3. 根請求必須連結到 `/protocol` 的協定文件
 
 對於 AI Agent 開發者：
-1. 透過 `X-MarkWay-Protocol` 頭或協定發現檢測 MarkWay 站點
+1. 透過 `/protocol` 或 `/protocol.md` 的協定發現檢測 MarkWay 站點
 2. 解析 `index.md` 表格以導航站點結構
 3. 使用 `GET` 取得文件，使用 `POST` 進行資料交換
 

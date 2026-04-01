@@ -56,7 +56,7 @@ For site owners:
 3. Root request must link to protocol documentation at `/protocol`
 
 For AI Agent developers:
-1. Detect MarkWay sites via the `X-MarkWay-Protocol` header or protocol discovery
+1. Detect MarkWay sites via protocol discovery at `/protocol` or `/protocol.md`
 2. Parse `index.md` tables to navigate site structure
 3. Use `GET` for documentation, `POST` for data exchange
 
