@@ -1,6 +1,6 @@
 https://github.com/RaysunKR/MarkWay
 
-> This site follows the MarkWay Protocol: https://github.com/RaysunKR/MarkWay/protocol.md
+> This site follows the MarkWay Protocol: https://github.com/RaysunKR/MarkWay/protocol_en.md
 
 # Sites Using MarkWay Protocol
 
