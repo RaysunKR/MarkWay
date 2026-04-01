@@ -56,7 +56,7 @@ Agent 根据地址格式判断路径类型并定位资源。
 ```markdown
 https://example.com
 
-> MarkWay Protocol: https://example.com/protocol.md
+> 本站遵循MarkWay协议：https://example.com/protocol.md
 
 # 页面标题
 
@@ -66,7 +66,7 @@ https://example.com
 **格式要求：**
 1. **第一行**：网站的 baseURL（根 URL 的绝对地址），无尾随斜杠
 2. **空行**
-3. **第二行**：以 `> ` 开头的引用块，声明本站遵循 MarkWay 协议并给出 protocol 的**绝对路径地址**
+3. **第二行**：以 `> ` 开头的引用块，格式为 `本站遵循MarkWay协议：{protocol绝对路径}`
 4. **空行**
 5. **正文内容**：页面主体内容
 
