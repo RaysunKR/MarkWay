@@ -109,6 +109,9 @@ Dynamic mode is suitable for scenarios requiring interaction and data exchange, 
 
 **Rules:**
 - **GET Request**: Returns Markdown format API documentation, URL is an absolute static path, **URL parameters are prohibited**. Response format follows the "GET Response Format Specification"
+  - If the response contains address lists or directories, it must be presented in **table format**
+  - **Required fields**: `Address`, `Description`
+  - **Optional fields**: Add as needed
 - **POST Request**: Executes data exchange, all parameters passed through the request body, supporting the following response formats:
   - Markdown dynamic page (default)
   - JSON / other format data (specified via `Accept` header)
