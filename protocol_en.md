@@ -91,7 +91,7 @@ https://example.com
 ```markdown
 https://docs.example.com
 
-> MarkWay Protocol: https://docs.example.com/protocol.md
+> This site follows the MarkWay Protocol: https://docs.example.com/protocol.md
 
 # Documentation Directory
 

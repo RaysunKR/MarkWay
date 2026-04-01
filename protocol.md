@@ -91,7 +91,7 @@ https://example.com
 ```markdown
 https://docs.example.com
 
-> MarkWay Protocol: https://docs.example.com/protocol.md
+> 本站遵循MarkWay协议：https://docs.example.com/protocol.md
 
 # 文档目录
 
