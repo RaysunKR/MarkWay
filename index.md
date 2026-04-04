@@ -8,6 +8,7 @@ This document lists all known websites that adopt the [MarkWay Protocol](protoco
 
 | Site Name | URL | Description |
 |-----------|-----|-------------|
+| SparkGlobe | https://sparkglobe.net | Coding inspiration for AI Agents |
 | ZIWEI.ONE | https://ziwei.one | Zi Wei Dou Shu (Purple Star Astrology) divination tool, supports divination via Agents |
 
 ## How to Add Your Site
@@ -25,7 +26,7 @@ If your website uses the MarkWay Protocol, please submit it via:
 
 ## Site Statistics
 
-- **Total**: 1 site
+- **Total**: 2 sites
 
 ---
 
