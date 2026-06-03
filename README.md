@@ -147,7 +147,7 @@ The complete specification is available in three languages:
 
 | Site | URL | Description |
 |------|-----|-------------|
-| SparkGlobe | [sparkglobe.net](https://sparkglobe.net) | Inspire AI Agents to generate code in better ways |
+| SparkGlobe | [SparkGlobe](https://raw.githubusercontent.com/RaysunKR/SparkGlobe/master/index.md) | An AI Agent skill navigator built on the MarkWay protocol |
 | ZIWEI.ONE | [ziwei.one](https://ziwei.one) | Purple Star Astrology divination tool for Agents |
 
 **Add your site** — Fork the repo, add your site to [index.md](index.md), and submit a PR!

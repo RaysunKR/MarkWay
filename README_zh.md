@@ -147,7 +147,7 @@ skills/markway/
 
 | 站点 | URL | 描述 |
 |------|-----|------|
-| SparkGlobe | [sparkglobe.net](https://sparkglobe.net) | 启发 AI Agent 以更好的方式生成代码 |
+| SparkGlobe | [SparkGlobe](https://raw.githubusercontent.com/RaysunKR/SparkGlobe/master/index.md) | 基于 MarkWay 协议的 AI Agent 技能导航器 |
 | ZIWEI.ONE | [ziwei.one](https://ziwei.one) | 紫微斗数占卜工具，支持 Agent 占卜 |
 
 **添加你的站点** — Fork 本仓库，将你的站点添加到 [index.md](index.md)，然后提交 PR！

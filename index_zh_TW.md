@@ -8,6 +8,7 @@ https://github.com/RaysunKR/MarkWay
 
 | 站點名稱 | 地址 | 描述 |
 |----------|------|------|
+| SparkGlobe | https://raw.githubusercontent.com/RaysunKR/SparkGlobe/master/index.md | 基於 MarkWay 協定的 AI Agent 技能導航器 |
 | ZIWEI.ONE | https://ziwei.one | 紫微斗數占卜工具，支援透過 Agents 進行占卜 |
 
 ## 如何添加您的站點
@@ -25,7 +26,7 @@ https://github.com/RaysunKR/MarkWay
 
 ## 站點統計
 
-- **總數**: 1 個站點
+- **總數**: 2 個站點
 
 ---
 
