@@ -1,87 +1,213 @@
-# MarkWay
+<div align="center">
 
-> Empowering AI Agents to browse the web with clarity and intelligence.
+# 🪐 MarkWay
 
-## Why MarkWay?
+**An HTTP protocol standard that empowers AI Agents to browse the web with clarity and intelligence.**
 
-The web was built for humans, not machines. While humans can effortlessly parse HTML, navigate complex layouts, and understand visual hierarchies, AI Agents struggle with these tasks. MarkWay bridges this gap by providing a protocol that speaks the language AI understands best: **structured, semantic content**.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Protocol](https://img.shields.io/badge/Protocol-v1.0-green.svg)](protocol_en.md)
+[![Sites](https://img.shields.io/badge/Adopted_Sites-2-orange.svg)](index.md)
 
-## The Problem
+[English](README.md) · [简体中文](README_zh.md) · [繁體中文](README_zh_TW.md)
 
-Traditional web browsing requires AI Agents to:
-- Parse complex HTML structures
-- Execute JavaScript to render content
-- Deal with inconsistent class names and DOM structures
-- Handle anti-scraping measures and rate limits
-- Extract meaningful data from visual layouts
-
-This approach is fragile, inefficient, and computationally expensive.
-
-## The Solution
-
-MarkWay introduces a **Markdown-first protocol** that transforms the web experience for AI Agents:
-
-```
-Web → Markdown → Agent
-```
-
-By serving content directly in Markdown format, MarkWay enables:
-
-- **Semantic clarity**: Content structure is explicit and unambiguous
-- **Efficient parsing**: No HTML parsing overhead or DOM manipulation
-- **Natural comprehension**: AI reads like humans read documentation
-- **Protocol discovery**: Built-in mechanism for Agents to understand site structure
-
-## How It Works
-
-MarkWay operates in two modes:
-
-### Static Mode
-Content is organized as Markdown files with predictable directory structures:
-- Every directory contains an `index.md` with a structured table of contents
-- All links end with `.md` for consistency
-- Supports relative, absolute, and external paths
-
-### Dynamic Mode
-Interactive endpoints use HTTP methods semantically:
-- `GET` returns Markdown documentation (no URL parameters)
-- `POST` performs data exchange via request body
-- Response format negotiation via `Accept` headers
-
-## Quick Start
-
-For site owners:
-1. Serve your content in Markdown format
-2. Include `index.md` in each directory with a table listing files and their purposes
-3. Root request must link to protocol documentation at `/protocol`
-
-For AI Agent developers:
-1. Detect MarkWay sites via protocol discovery at `/protocol` or `/protocol.md`
-2. Parse `index.md` tables to navigate site structure
-3. Use `GET` for documentation, `POST` for data exchange
-
-## Protocol Specification
-
-The complete protocol specification is available in:
-- [English](protocol_en.md)
-- [简体中文](protocol.md)
-- [繁體中文](protocol_zh_TW.md)
-
-## Use Cases
-
-- **API Documentation**: Human-readable docs that Agents can parse flawlessly
-- **Knowledge Bases**: Structured information accessible to both humans and AI
-- **Data Services**: Query endpoints with self-documenting interfaces
-- **AI-Native Applications**: Build web services designed for Agent consumption
-
-## Contributing
-
-We welcome contributions! Please submit issues and pull requests to help improve the MarkWay protocol.
-
-## License
-
-MIT License
+</div>
 
 ---
 
-*MarkWay: The web, reimagined for the age of AI.*
+## ✨ The Vision
+
+> **Web → Markdown → Agent**
+
+The web was built for humans, not machines. MarkWay bridges the gap by providing a **Markdown-first protocol** that speaks the language AI understands best — structured, semantic content. No more fragile HTML parsing. No more JavaScript rendering overhead.
+
+```text
+┌──────────┐     MarkWay      ┌──────────────┐     Structured      ┌──────────┐
+│          │  ──- Protocol ──► │              │  ──- Markdown ────► │          │
+│   Web    │                   │   MarkWay    │                     │  AI      │
+│  Server  │  ◄── Markdown ──  │   Server     │  ◄── Requests ───  │  Agent   │
+│          │                   │              │                     │          │
+└──────────┘                   └──────────────┘                     └──────────┘
+```
+
+---
+
+## 🎯 Why MarkWay?
+
+Traditional web browsing for AI Agents is painful:
+
+| Challenge | Traditional Web | MarkWay |
+|-----------|----------------|---------|
+| **Parsing** | Complex HTML + DOM tree | Pure Markdown |
+| **Rendering** | JavaScript execution needed | Static text, no JS |
+| **Navigation** | Inconsistent class names | Structured `index.md` tables |
+| **Discovery** | Crawling & guessing | Built-in protocol endpoint |
+| **Bandwidth** | Bloated HTML/CSS/JS | Minimal text payload |
+
+---
+
+## 🚀 How It Works
+
+MarkWay operates in **two modes**, both serving content directly as Markdown:
+
+### 📄 Static Mode
+For document-oriented sites with fixed content — just serve `.md` files.
+
+- Every directory contains an `index.md` with a **structured table of contents**
+- All links end with `.md` for consistency
+- Supports relative, absolute, and external paths
+
+```markdown
+https://docs.example.com
+
+> This site follows the MarkWay Protocol: https://docs.example.com/protocol.md
+
+# Documentation Directory
+
+| Address | Description |
+|---------|-------------|
+| ./getting-started.md | Getting Started guide for new users |
+| ./api/index.md       | API Reference with all endpoints |
+| ./examples/index.md  | Real-world usage examples |
+```
+
+### ⚡ Dynamic Mode
+For interactive endpoints requiring data exchange.
+
+| Method | Purpose | Response |
+|--------|---------|----------|
+| `GET` | Retrieve documentation | Markdown (no URL params) |
+| `POST` | Data exchange | Markdown or JSON via `Accept` header |
+
+```bash
+# Get API documentation
+GET /api/users
+# → Returns Markdown docs for this endpoint
+
+# Execute a query
+POST /api/users
+Content-Type: application/json
+{"id": 123}
+# → Returns user data as Markdown table or JSON
+```
+
+---
+
+## 🔍 Protocol Discovery
+
+Every MarkWay site announces itself at the root entry point:
+
+| Mode | Entry Point | Protocol Document |
+|------|-------------|-------------------|
+| Static | `/index.md` | `{baseURL}/protocol.md` |
+| Dynamic | `/` | `{baseURL}/protocol` |
+
+Agents simply follow the protocol link to understand the full site structure — no guesswork, no crawling.
+
+---
+
+## 🛠 Quick Start
+
+### For Site Owners
+
+1. **Serve** your content as Markdown files
+2. **Add** an `index.md` to each directory with a table listing files and descriptions
+3. **Link** to the protocol document from the root request
+
+### For AI Agent Developers
+
+1. **Detect** MarkWay sites via `/protocol` or `/protocol.md`
+2. **Parse** `index.md` tables to navigate the site structure
+3. **Use** `GET` for docs, `POST` for data exchange
+
+### For AI Agent Platforms
+
+MarkWay ships a ready-to-use **skill** that lets your agents automatically discover and interact with MarkWay sites:
+
+```
+skills/markway/
+```
+
+Include it in your agent's skill registry to enable instant MarkWay protocol support.
+
+---
+
+## 📋 Protocol Specification
+
+The complete specification is available in three languages:
+
+| Language | Document |
+|----------|----------|
+| English | [protocol_en.md](protocol_en.md) |
+| 简体中文 | [protocol.md](protocol.md) |
+| 繁體中文 | [protocol_zh_TW.md](protocol_zh_TW.md) |
+
+---
+
+## 🌍 Sites Using MarkWay
+
+| Site | URL | Description |
+|------|-----|-------------|
+| SparkGlobe | [sparkglobe.net](https://sparkglobe.net) | Inspire AI Agents to generate code in better ways |
+| ZIWEI.ONE | [ziwei.one](https://ziwei.one) | Purple Star Astrology divination tool for Agents |
+
+**Add your site** — Fork the repo, add your site to [index.md](index.md), and submit a PR!
+
+---
+
+## 💡 Use Cases
+
+<table>
+<tr>
+<td width="50%">
+
+#### 📚 API Documentation
+Human-readable docs that AI Agents parse flawlessly — no OpenAPI overhead.
+
+</td>
+<td width="50%">
+
+#### 🧠 Knowledge Bases
+Structured information accessible to both humans and AI, from the same source.
+
+</td>
+</tr>
+<tr>
+<td width="50%">
+
+#### 🔄 Data Services
+Self-documenting query endpoints. Agents discover capabilities automatically.
+
+</td>
+<td width="50%">
+
+#### 🤖 AI-Native Apps
+Build web services designed from the ground up for Agent consumption.
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Here's how you can help:
+
+- 🐛 **Report issues** — Found a bug? Open an issue.
+- 💡 **Propose ideas** — Suggestions for protocol improvements.
+- 🔀 **Submit PRs** — Code contributions and documentation fixes.
+- 🌐 **Add your site** — Adopt MarkWay and list it in the index.
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+<div align="center">
+
+**MarkWay — The web, reimagined for the age of AI.** 🪐
+
+</div>
